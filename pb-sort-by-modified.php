@@ -3,7 +3,7 @@
  * Plugin Name: Sort By Modified Date
  * Plugin URI: https://aubsandmugg.com
  * Description: Shows an admin column with the modified date, time and user who last edited the post. Allows users to sort posts by modification date.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: Phil Buchanan
  * Author URI: https://aubsandmugg.com
  * Text Domain: pb
@@ -51,7 +51,9 @@ class PB_Sort_By_Modified {
 		if ($column_name === 'modified') { ?>
 			<?php _e('Modified', 'pb'); ?><br>
 			<span title="<?php echo get_the_modified_time('Y/m/d g:i:s a'); ?>"><?php echo get_the_modified_time('Y/m/d'); ?></span><br>
-			<?php printf(__('By %s', 'pb'), get_the_modified_author()); ?>
+			<?php if (get_the_modified_author()) {
+				printf(__('By %s', 'pb'), get_the_modified_author());
+			} ?>
 		<?php }
 	}
 
