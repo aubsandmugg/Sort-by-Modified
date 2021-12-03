@@ -3,7 +3,8 @@
  * Plugin Name: Sort By Modified Date
  * Plugin URI: https://aubsandmugg.com
  * Description: Shows an admin column with the modified date, time and user who last edited the post. Allows users to sort posts by modification date.
- * Version: 1.1.0
+ * Version: 1.1.1
+ * Update URI: false
  * Author: Phil Buchanan
  * Author URI: https://aubsandmugg.com
  * Text Domain: pb
