@@ -65,9 +65,17 @@ class PB_Sort_By_Modified {
 	public function modified_column_display($column_name, $post_id) {
 		if ($column_name === 'modified') { ?>
 			<?php esc_html_e('Modified', 'pb'); ?><br>
-			<span title="<?php echo get_the_modified_time('Y/m/d g:i:s a'); ?>"><?php echo get_the_modified_time('Y/m/d'); ?></span><br>
+			<time
+				dateTime="<?php echo esc_attr(get_the_modified_time(DATE_W3C)); ?>"
+				title="<?php printf(esc_html_x('%s at %s', '[DATE] at [TIME]', 'pb'),
+					get_the_modified_time('Y/m/d'),
+					get_the_modified_time('g:i a'),
+				); ?>"
+			>
+				<?php echo esc_html(get_the_modified_time('Y/m/d')); ?>
+			</time><br>
 			<?php if (get_the_modified_author()) {
-				printf(esc_html__('By %s', 'pb'), get_the_modified_author());
+				printf(esc_html_x('By %s', 'Name of person who last modified the post', 'pb'), get_the_modified_author());
 			} ?>
 		<?php }
 	}
@@ -115,7 +123,7 @@ class PB_Sort_By_Modified {
 				width: 10%;
 			}
 
-			.column-modified span[title] {
+			.column-modified time[title] {
 				-webkit-text-decoration: dotted underline;
 				        text-decoration: dotted underline;
 			}
